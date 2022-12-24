@@ -161,8 +161,8 @@ impl Rune {
 
 fn main() {
     let space = 3;
-    let num_x = 10;
-    let num_y = 10;
+    let num_x = 64;
+    let num_y = 64;
     let img_wid = num_x * (space + WID) + space;
     let img_hei = num_y * (space + HEI) + space;
     let mut pixels = vec![255; img_wid * img_hei];
