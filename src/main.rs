@@ -1,7 +1,6 @@
-use std::{ops::{Index, IndexMut}, fs::File};
+use std::ops::{Index, IndexMut};
 use rand::prelude::*;
 use image::ColorType;
-use image::png::PNGEncoder;
 
 const WID:usize = 5;
 const HEI:usize = 7;
@@ -174,7 +173,5 @@ fn main() {
             rune.render(&mut pixels, x * (space + WID) + space, y * (space + HEI) + space, img_wid);
         }
     }
-    let file = File::create("out.png").unwrap();
-    let encoder = PNGEncoder::new(file);
-    encoder.encode(&pixels, img_wid as u32, img_hei as u32, ColorType::Gray(8)).unwrap();
+    image::save_buffer("out.png", &pixels, img_wid as u32, img_hei as u32, ColorType::L8).unwrap();
 }
